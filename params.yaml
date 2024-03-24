@@ -1,1 +1,8 @@
-key: val
+AUGEMENTATION: True
+IMAGE_SIZE: [224,224,3] #VGG16 model requirement check offical keras website
+INCLUDE_TOP: False
+BATCH_SIZE: 32
+EPOCHS: 10
+CLASSES: 2
+WEIGHTS: imagenet
+LEARNING_RATE: 0.01

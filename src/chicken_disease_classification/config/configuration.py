@@ -1,6 +1,6 @@
 from chicken_disease_classification.constants import *
 from chicken_disease_classification.utils.common import read_yaml, create_directories
-from chicken_disease_classification.entity.config_entity import DataIngestionConfig
+from chicken_disease_classification.entity.config_entity import DataIngestionConfig, ModelTrainerConfig
 
 
 class ConfigurationManager:
@@ -25,4 +25,21 @@ class ConfigurationManager:
         )
 
         return data_ingestion_config
+    
+    def model_trainer(self) -> ModelTrainerConfig:
+            config = self.config.prepare_base_model
+            params = self.params
+            create_directories([config.root_dir])
+
+            model_trainer_config = ModelTrainerConfig(
+                    root_dir = config.root_dir,
+                    model_path = config.model_path,
+                    updated_model_path = config.updated_model_path,
+                    image_size= params.IMAGE_SIZE,
+                    learning_rate=params.LEARNING_RATE,
+                    weights= params.WEIGHTS,
+                    classes = params.CLASSES,
+                    include_top=params.INCLUDE_TOP
+                    )
+            return model_trainer_config
         

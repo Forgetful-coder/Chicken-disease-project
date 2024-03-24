@@ -5,3 +5,9 @@ data_ingestion:
   source_url: https://github.com/Forgetful-coder/Chicken-disease-project/raw/main/Chicken_disease.zip
   local_file : artifacts/data_ingestion/data.zip
   unzip_dir : artifacts/data_ingestion
+
+
+prepare_base_model:
+  root_dir: artifacts/base_model
+  model_path: artifacts/base_model/base_model.h5
+  updated_model_path: artifacts/base_model/base_model_updated.h5
