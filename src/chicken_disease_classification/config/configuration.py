@@ -1,6 +1,7 @@
+import os
 from chicken_disease_classification.constants import *
 from chicken_disease_classification.utils.common import read_yaml, create_directories
-from chicken_disease_classification.entity.config_entity import DataIngestionConfig, ModelTrainerConfig
+from chicken_disease_classification.entity.config_entity import DataIngestionConfig, ModelTrainerConfig,PrepareCallbackConfig
 
 
 class ConfigurationManager:
@@ -42,4 +43,19 @@ class ConfigurationManager:
                     include_top=params.INCLUDE_TOP
                     )
             return model_trainer_config
+    
+    def prepare_callbacks_config(self)-> PrepareCallbackConfig:
+        config = self.config.prepare_callbacks
+        model_chkpoint_dir = os.path.dirname(config.checkpoint_model_file_path)
+        create_directories([Path(model_chkpoint_dir),
+                            Path(config.tensorbaord_log_root_dir)
+                            ])
+        prepare_callbacks_config = PrepareCallbackConfig(
+            root_dir=Path(config.root_dir),
+            tensorbaord_log_root_dir= Path(config.tensorbaord_log_root_dir),
+            checkpoint_model_file_path= Path(config.checkpoint_model_file_path)
+
+        )
+        return prepare_callbacks_config
+
         

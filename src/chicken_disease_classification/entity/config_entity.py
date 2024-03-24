@@ -20,3 +20,9 @@ class ModelTrainerConfig:
     classes:int
     include_top: bool
 
+@dataclass(frozen=True)
+class PrepareCallbackConfig:
+    root_dir: Path
+    tensorbaord_log_root_dir: Path
+    checkpoint_model_file_path: Path
+
