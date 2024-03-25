@@ -11,8 +11,8 @@ class ModelTrainingPipeline:
     def main(self):
         config = ConfigurationManager()
         prepare_callbacks_config = config.prepare_callbacks_config()
-        prepare_callbacks = prepare_callbacks.PrepareCallback(config=prepare_callbacks_config)
-        callback_list = prepare_callbacks.get_tb_ckpt_callbacks()
+        prepare_callback = prepare_callbacks.PrepareCallback(config=prepare_callbacks_config)
+        callback_list = prepare_callback.get_tb_ckpt_callbacks()
 
         training_config = config.get_training_config()
         training = training_comp.Training(config=training_config)
