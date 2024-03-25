@@ -1,4 +1,4 @@
-AUGEMENTATION: True
+AUGMENTATION: True
 IMAGE_SIZE: [224,224,3] #VGG16 model requirement check offical keras website
 INCLUDE_TOP: False
 BATCH_SIZE: 32
